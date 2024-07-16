@@ -1,0 +1,45 @@
+import java.util.*;
+public class Stack {
+    final int MAX = 10; 
+    public int top=-1;
+    char[] arr= new char[MAX];
+    List<Character> reverse=new ArrayList<>();
+ 
+    public void push(String x) {
+        if (top >= (MAX - 1)) {
+            System.out.println("Stack Overflow");
+        } 
+        if (top==x.length()-1) {
+            pop();
+        }
+        else {
+            top=top+1;
+            arr[top] = x.charAt(top);
+            push(x);
+        }
+        return;
+    }  
+    public void pop() {
+        if (top==-1) {
+            printReverse();
+        }
+        else { 
+            char ele=arr[top];
+            reverse.add(ele);
+            top=top-1;
+            pop(); 
+        }
+    } 
+    public void printReverse() {
+        StringBuilder sb = new StringBuilder();
+        for (char c : reverse) {
+            sb.append(c);
+        }
+        System.out.println(sb.toString());
+    }
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+        String str=new String("Sakshi");  
+        stack.push(str);
+    }
+}
