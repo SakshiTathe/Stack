@@ -1,0 +1,36 @@
+
+import java.util.Stack;
+
+public class StackImp {
+    static Stack<String> stack = new Stack<>();
+    public static void reverse(){
+        if (!(stack.isEmpty())) { 
+            String ele=stack.pop(); 
+            reverse(); 
+            pushbottom(ele);
+        }
+
+    }
+    public static void pushbottom(String ele){
+        if(stack.isEmpty()){ 
+            stack.push(ele); 
+        }
+        else{
+            String temp=stack.pop();
+            pushbottom(ele);
+            stack.push(temp);
+        }
+    }
+    public static void main(String[] args) {
+
+        stack.push("Dog");
+        stack.push("Horse");
+        stack.push("Cat");
+        stack.push("Dog");
+        stack.push("hen");
+        stack.push("cow");
+        System.out.println("Stack: " + stack);
+        reverse(); 
+        System.out.println("Stack: "+stack);
+    }
+}
